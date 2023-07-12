@@ -15,25 +15,33 @@ pragma solidity 0.8.18;
        to the amount that is supposed to be burned.
 */
 
+
 contract MyToken {
-// public variables here
-        string public tokenName = "VISHAL";
-        string public tokenAbbrv = "VIK";
-        uint public totalSupply = 1;
 
-// mapping variable here
-        mapping(address => uint) public balances;
+    // public variables here
+    string public tokenName = "VISHAL";
+    string public abbrv = "VISH";
+    uint public totalSupply = 0;
+    
 
-// mint function
- function mint (address _address , uint _value) public{
-     totalSupply += _value;
-     balances[_address] += _value;
-}
-// burn function
-function burn (address _address , uint _value) public {
-        if (balances[_address] >= _value){
+    // mapping variable here
+    mapping (address=> uint) public balances;
+
+    // mint function
+    function mint(address _address, uint _value) public {
+        totalSupply += _value;
+        balances[_address] += _value;  
+
+    }
+
+
+    // burn function
+    function burn( address _address,uint _value) public {
+        if( balances[_address] >= _value){
             totalSupply -= _value;
             balances[_address] -= _value;
         }
+        
     }
+
 }
